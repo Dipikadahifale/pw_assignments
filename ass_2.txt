@@ -1,0 +1,81 @@
+-- joins in sql  
+
+
+-- create database
+create database join1;
+-- use created database
+use join1;
+
+-- create table1  student1
+create table student1(
+id int,
+name varchar(23),
+age int);
+
+desc student1;
+
+-- create table2 department 
+create table department(
+id int,
+dname varchar(23),
+dstrength int);
+
+-- create table3 country
+create table country(
+id int,
+name varchar(23),
+populattion int);
+
+-- insert values in country table
+insert into  country value( 1,"india",23333);
+insert into country value( 2,"cheen",22222);
+insert into country value( 5,"rashiya",21223);
+insert into country value( 3,"india",219090);
+insert into country value( 11,"indial",209839);
+
+-- select all values from country table
+select * from country;
+drop table country;
+
+-- insert values in student1 table
+insert into student1 value( 1,"ram",23);
+insert into student1 value( 2,"sham",22);
+insert into student1 value( 3,"kavya",23);
+insert into student1 value( 4,"dipika",21);
+insert into student1 value( 5,"tushar",20);
+
+-- select all values from student1;
+select *from student1;
+
+-- insert values in department table
+insert into department value( 1,"electrical",90);
+insert into department value( 3,"structural",122);
+insert into department value( 8,"civil",88);
+insert into department value( 4,"computer",90);
+insert into department value( 9,"mechanical",95);
+drop table department;
+drop table student1;
+
+-- select all values from department;
+select * from department;
+
+-- inner join 
+-- it return  record that have matching values in both tables.
+select * from student1 inner join department on student1.id=department.id;
+
+-- left join
+-- It returns all records from left table and matching records from right table.
+select * from student1 left join department on student1.id=department.id;
+
+-- right join
+-- It returns all records from right table and matching records from left table
+select * from student1 right join department on student1.id=department.id order by student1.name;
+
+
+-- we can join two or more tables at a time
+select * from student1 inner join department on student1.id=department.id inner join country on department.id=country.id;
+
+-- this table is joined with itself
+select  * from student1 as s,department as d,country as c  where s.id=d.id and s.id=c.id;
+
+
